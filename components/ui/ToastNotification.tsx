@@ -14,7 +14,6 @@ export default function ToastNotification() {
         pauseOnFocusLoss
         pauseOnHover
         theme="colored"
-        toastStyle={{background: "linear-gradient(to right, red, purple)"}}
     />
   )
 }

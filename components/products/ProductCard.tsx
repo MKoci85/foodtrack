@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { formatCurrency } from "@/src/utils"
+import { formatCurrency, getImagePath } from "@/src/utils"
 import { Product } from "@prisma/client"
 import Image from "next/image"
 import AddProductButton from './AddProductButton'
@@ -12,6 +12,7 @@ type ProductCardProps = {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const imagePath = getImagePath(product.image)
 
   return (
     <div 
@@ -23,7 +24,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <Image 
           width={400}
           height={500}
-          src={`/products/${product.image}.jpg`}
+          src={imagePath}
           alt={`Imagen platillo ${product.name}`}
           priority
           className="w-full h-64 object-cover transition-transform duration-300 transform hover:scale-110"

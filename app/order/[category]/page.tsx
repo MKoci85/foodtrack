@@ -1,4 +1,5 @@
 import ProductCard from "@/components/products/ProductCard"
+import Heading from "@/components/ui/Heading"
 import { prisma } from "@/src/lib/prisma"
 import { Montserrat } from 'next/font/google'
 
@@ -21,10 +22,10 @@ export default async function OrderPage({ params }: { params: { category: string
 
   return (
     <div className={`min-h-screen bg-gray-900 text-gray-100 p-8 ${montserrat.className}`}>
-      <h1 className="text-4xl font-extrabold mb-12 text-center bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text">
+      <Heading>
         Elige y personaliza tu pedido
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      </Heading>
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-8">
         {products.map((product, index) => (
           <div
             key={product.id}

@@ -13,11 +13,14 @@ const montserrat = Montserrat({ subsets: ['latin'] })
 
 export default function OrderSummary() {
   const order = useStore((state) => state.order)
+  const clearOrder = useStore((state) => state.clearOrder)
   const total = useMemo(() => order.reduce((total, item) => total + (item.quantity * item.price), 0), [order])
 
   const handleCreateOrder = async (formData: FormData) => {
     const data = {
-      name: formData.get('name')
+      name: formData.get('name'),
+      total,
+      order
     }
     const result = OrderSchema.safeParse(data)
     
@@ -34,6 +37,9 @@ export default function OrderSummary() {
         toast.error(issue.message)
       })
     }
+
+    toast.success('Pedido realizado correctamente')
+    clearOrder()
   }
 
   return (

@@ -1,6 +1,7 @@
 import { prisma } from '@/src/lib/prisma'
 import CategoryIcon from '../ui/CategoryIcon'
 import { Montserrat } from 'next/font/google'
+import Logo from '../ui/Logo'
 
 const montserrat = Montserrat({ subsets: ['latin'] })
 
@@ -14,10 +15,8 @@ export default async function OrderSidebar() {
   return (
     <aside className={`md:w-72 md:h-screen bg-gray-800 text-gray-100 ${montserrat.className}`}>
       <div className="p-6">
-        <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-600 text-transparent bg-clip-text">
-          Categorías
-        </h2>
-        <nav>
+        <Logo />
+        <nav className='mt-10'>
           <ul className="space-y-4">
             {categories.map(category => (
               <li key={category.id}>
