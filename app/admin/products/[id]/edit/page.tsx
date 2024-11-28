@@ -1,22 +1,21 @@
-import EditProductForm from "@/components/products/EditProductForm"
-import ProductForm from "@/components/products/ProductForm"
-import GoBackButton from "@/components/ui/GoBackButton"
-import Heading from "@/components/ui/Heading"
-import { prisma } from "@/src/lib/prisma"
-import { notFound } from "next/navigation"
+import EditProductForm from "@/components/products/EditProductForm";
+import ProductForm from "@/components/products/ProductForm";
+import GoBackButton from "@/components/ui/GoBackButton";
+import Heading from "@/components/ui/Heading";
+import { prisma } from "@/src/lib/prisma";
+import { notFound } from "next/navigation";
 
 async function getProductById(id: number) {
     const product = await prisma.product.findUnique({
         where: {
             id
         }
-    })
-    return product
+    });
+    return product;
 }
 
 export default async function EditProductsPage({params}: {params: {id: string}}) {
-    const resolvedParams = await params; 
-    const product = await getProductById(+resolvedParams.id);
+    const product = await getProductById(Number(params.id)); 
     if (!product) {
         notFound();
     }
@@ -39,5 +38,5 @@ export default async function EditProductsPage({params}: {params: {id: string}})
                 
             </div>
         </div>
-    )
+    );
 }
