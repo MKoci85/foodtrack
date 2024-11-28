@@ -14,8 +14,15 @@ async function getProductById(id: number) {
     return product;
 }
 
-export default async function EditProductsPage({params}: {params: {id: string}}) {
-    const product = await getProductById(Number(params.id)); 
+interface EditProductsPageProps {
+    params: {
+        id: string;
+    };
+}
+
+export default async function EditProductsPage({ params }: EditProductsPageProps) {
+    const resolvedParams = await Promise.resolve(params); 
+    const product = await getProductById(Number(resolvedParams.id)); 
     if (!product) {
         notFound();
     }
