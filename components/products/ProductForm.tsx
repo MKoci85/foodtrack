@@ -1,6 +1,6 @@
 import { prisma } from "@/src/lib/prisma"
 import ImageUpload from "./ImageUpload"
-import { Package, DollarSign, Tag, ArrowLeft } from 'lucide-react'
+import { Package, DollarSign, Tag } from 'lucide-react'
 import { Product } from "@prisma/client"
 
 async function getCategories(){

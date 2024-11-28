@@ -1,6 +1,5 @@
 'use client'
 
-import { createProduct } from "@/actions/create-product-action"
 import { ProductSchema } from "@/src/schema"
 import { useRouter } from "next/navigation"
 import { toast } from "react-toastify"

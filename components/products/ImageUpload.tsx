@@ -1,18 +1,19 @@
 'use client'
 
-import { CldUploadWidget } from "next-cloudinary"
+import { CldUploadWidget, CloudinaryUploadWidgetResults } from "next-cloudinary"
 import { ImageUp, X } from 'lucide-react'
 import { useState } from "react"
 import Image from "next/image"
 import { getImagePath } from "@/src/utils"
 
+
+
 export default function ImageUpload({image} : {image: string | undefined}) {
     const [imageUrl, setImageUrl] = useState('')
 
-    const handleSuccess = (result: any, { widget }: { widget: any }) => {
-        if (result.event === 'success') {
-            widget.close()
-            setImageUrl(result.info.secure_url)
+    const handleSuccess = (result: CloudinaryUploadWidgetResults) => {
+        if (typeof result.info === 'object' && result.info !== null) {
+            setImageUrl(result.info.secure_url);
         }
     }
 
@@ -75,11 +76,10 @@ export default function ImageUpload({image} : {image: string | undefined}) {
                         <Image 
                             fill
                             src={getImagePath(image)}
-                            alt="Imagen Prodcto"
+                            alt="Imagen Producto"
                             style={{objectFit: 'cover'}}
                         />
                     </div>
-
                 </div>
             )}
             <input 
@@ -90,3 +90,4 @@ export default function ImageUpload({image} : {image: string | undefined}) {
         </div>
     )
 }
+
