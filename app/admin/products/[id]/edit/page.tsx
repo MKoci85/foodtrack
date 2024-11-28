@@ -15,9 +15,10 @@ async function getProductById(id: number) {
 }
 
 export default async function EditProductsPage({params}: {params: {id: string}}) {
-    const product = await getProductById(+params.id)
-    if(!product) {
-        notFound()
+    const resolvedParams = await params; 
+    const product = await getProductById(+resolvedParams.id);
+    if (!product) {
+        notFound();
     }
 
     return (
