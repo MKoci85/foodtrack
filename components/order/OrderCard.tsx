@@ -13,6 +13,19 @@ export default function OrderCard({ order }: OrderCardProps) {
             aria-labelledby={`order-${order.id}-heading`}
             className="rounded-lg bg-gray-800 px-6 py-8 shadow-lg space-y-6"
         >
+            <form action={completeOrder}>
+                <input 
+                    type="hidden"
+                    value={order.id}
+                    name="order_id"
+                />
+                <button
+                    type="submit"
+                    className="w-full mb-6 bg-purple-500 hover:bg-purple-700 text-white py-3 px-4 rounded-lg font-bold uppercase transition-colors duration-200"
+                >
+                    Marcar Orden Completada
+                </button>
+            </form>
             <div className="flex items-center space-x-3">
                 <User className="text-purple-400" size={24} />
                 <h2 id={`order-${order.id}-heading`} className='text-2xl font-medium text-white'>Cliente: {order.name}</h2>
@@ -45,20 +58,6 @@ export default function OrderCard({ order }: OrderCardProps) {
                     <dd className="text-base font-bold text-amber-400">{formatCurrency(order.total)}</dd>
                 </div>
             </dl>
-
-            <form action={completeOrder}>
-                <input 
-                    type="hidden"
-                    value={order.id}
-                    name="order_id"
-                />
-                <button
-                    type="submit"
-                    className="w-full mt-6 bg-purple-500 hover:bg-purple-700 text-white py-3 px-4 rounded-lg font-bold uppercase transition-colors duration-200"
-                >
-                    Marcar Orden Completada
-                </button>
-            </form>
         </section>
     )
 }

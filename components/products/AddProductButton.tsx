@@ -16,7 +16,7 @@ export default function AddProductButton({product}: AddProductButtonProps) {
             className="bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-full font-bold transition-colors duration-300"
             onClick={() => addToOrder(product)}
           >
-            Agregar al carrito
+            Agregar al pedido
           </button>
   )
 }

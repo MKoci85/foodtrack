@@ -10,7 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-montserrat)', ...fontFamily.sans],
+        sans: ['Inter var', ...fontFamily.sans],
       },
       animation: {
         fadeIn: 'fadeIn 0.5s ease-out forwards',
