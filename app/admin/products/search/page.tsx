@@ -18,13 +18,13 @@ async function searchProducts(searchTerm: string) {
     return products
 }
 
-export default async function SearchPage({searchParams}: {searchParams: {search: string}}) {
-    const products = await searchProducts(searchParams.search)
+export default async function SearchPage({searchParams}: {searchParams: Promise<{search: string}>}) {
+    const products = await searchProducts((await searchParams).search)
 
     return (
         <div className="min-h-screen bg-gray-900 text-gray-100 p-8">
             <Heading>
-                Resultados de Búsqueda: {searchParams.search}
+                Resultados de Búsqueda: {(await searchParams).search}
             </Heading>
             <div className="mb-8">
                 <ProductSearchForm />
